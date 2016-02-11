@@ -73,7 +73,16 @@ Array.prototype.remove = function (element) {
         return false;
     }
 };
+
+var envUtils = require('./lib/envUtils.js');
+
+if (false === envUtils.exists()) {
+    console.error("\".env\" does not exists");
+    return;
+}
+
 require('dotenv').load();
+
 var DubAPI = require('dubapi');
 var jsonfile = require('jsonfile');
 var fs = require('fs');
